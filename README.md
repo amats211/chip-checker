@@ -6,6 +6,7 @@ A mobile-first web app for identifying eMMC/UFS chip quality grades and current 
 
 ## Features
 - 📷 **Camera capture** — take a photo directly from your phone
+- 🤖 **AI auto-detection** — reads chip model from photo automatically
 - ✅ **Grade lookup** — A-, A+, A++, A+++, A++++
 - 💰 **PH pricing** — editable prices per grade (₱)
 - 🕘 **History** — last 20 checks saved locally
