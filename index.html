@@ -216,13 +216,63 @@ body{font-family:'Courier New',monospace;background:var(--bg);color:var(--tx);mi
 .dm-copied{color:var(--green);font-size:12px;display:none;margin-bottom:8px;letter-spacing:1px}
 .dm-close{background:none;border:1px solid var(--br);border-radius:8px;padding:9px 20px;color:var(--mt);font-family:inherit;font-size:12px;letter-spacing:1px;cursor:pointer}
 .dm-heart{font-size:11px;color:var(--mt);margin-top:10px;line-height:1.7}
+
+/* ══ TALLY TAB ══════════════════════════════════════════════════ */
+.tally-wrap{padding:0}
+.tally-header{background:var(--sf);border:1px solid var(--br);border-radius:10px;padding:12px 14px;margin-bottom:12px}
+.tally-header h2{font-size:13px;color:var(--ac);letter-spacing:2px;text-transform:uppercase;margin-bottom:4px}
+.tally-header p{font-size:11px;color:var(--mt);line-height:1.6}
+.tally-buyer-row{display:flex;gap:8px;align-items:center;margin-bottom:10px}
+.tally-buyer-sel{flex:1;background:var(--sf2);border:1px solid var(--br);border-radius:6px;padding:8px 10px;color:var(--tx);font-family:inherit;font-size:12px;outline:none}
+.tally-buyer-sel:focus{border-color:var(--ac)}
+.tally-btn-sm{padding:8px 14px;border-radius:6px;border:none;font-family:inherit;font-size:11px;font-weight:700;letter-spacing:1px;cursor:pointer;white-space:nowrap}
+.tally-btn-clear{background:rgba(239,68,68,.12);border:1px solid rgba(239,68,68,.3);color:var(--red)}
+.tally-btn-save{background:rgba(74,222,128,.12);border:1px solid rgba(74,222,128,.3);color:var(--green)}
+.tally-btn-print{background:rgba(79,195,247,.12);border:1px solid rgba(79,195,247,.3);color:var(--ac)}
+.tally-table{width:100%;border-collapse:collapse;background:var(--sf);border-radius:10px;overflow:hidden;border:1px solid var(--br);margin-bottom:12px}
+.tally-table thead tr{background:#091520}
+.tally-table th{padding:9px 8px;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--mt);text-align:left;border-bottom:1px solid var(--br)}
+.tally-table th:nth-child(2),.tally-table th:nth-child(3),.tally-table th:nth-child(4){text-align:right}
+.tally-table td{padding:6px 8px;font-size:12px;border-bottom:1px solid rgba(30,58,95,.5);vertical-align:middle}
+.tally-table td:nth-child(2),.tally-table td:nth-child(4){text-align:right}
+.tally-table td:nth-child(3){text-align:right}
+.tally-table tr:last-child td{border-bottom:none}
+.tally-table tr.section-sep td{background:#091520;font-size:10px;color:var(--mt);letter-spacing:1.5px;text-transform:uppercase;padding:6px 8px;border-bottom:1px solid var(--br)}
+.tally-table tr.grand-row{background:#091520}
+.tally-table tr.grand-row td{font-size:13px;font-weight:700;color:var(--gold);padding:10px 8px;border-top:1px solid var(--br);border-bottom:none}
+.tally-code{font-size:12px;color:var(--tx);letter-spacing:.5px}
+.tally-price-inp{width:80px;background:var(--sf2);border:1px solid var(--br);border-radius:4px;padding:5px 6px;color:var(--ac);font-family:inherit;font-size:12px;font-weight:700;text-align:right;outline:none}
+.tally-price-inp:focus{border-color:var(--ac)}
+.tally-pcs-inp{width:56px;background:var(--sf2);border:1px solid var(--br);border-radius:4px;padding:5px 6px;color:var(--green);font-family:inherit;font-size:13px;font-weight:700;text-align:right;outline:none}
+.tally-pcs-inp:focus{border-color:var(--green)}
+.tally-total{color:var(--gold);font-weight:700;font-size:13px;min-width:60px;display:inline-block;text-align:right}
+.tally-summary{background:var(--sf);border:1px solid var(--br);border-radius:10px;padding:14px;margin-bottom:12px}
+.tally-summary h3{font-size:11px;color:var(--ac);letter-spacing:2px;text-transform:uppercase;margin-bottom:10px}
+.tally-sum-row{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid rgba(30,58,95,.4);font-size:12px}
+.tally-sum-row:last-child{border-bottom:none}
+.tally-sum-label{color:var(--mt)}
+.tally-sum-val{color:var(--gold);font-weight:700}
+.tally-grand-box{background:linear-gradient(135deg,#0a1820,#091530);border:1px solid var(--gold);border-radius:10px;padding:14px;text-align:center;margin-bottom:12px}
+.tally-grand-label{font-size:11px;color:var(--mt);letter-spacing:2px;text-transform:uppercase;margin-bottom:4px}
+.tally-grand-val{font-size:28px;font-weight:700;color:var(--gold);letter-spacing:2px}
+.tally-grand-pcs{font-size:11px;color:var(--mt);margin-top:4px}
+.tally-action-row{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap}
+.tally-action-row button{flex:1;min-width:80px}
+.tally-saved-note{font-size:11px;color:var(--green);text-align:center;padding:6px;display:none;border-radius:6px;background:rgba(74,222,128,.08);border:1px solid rgba(74,222,128,.2);margin-bottom:8px}
+.tally-saved-note.on{display:block}
+.tally-history-item{background:var(--sf);border:1px solid var(--br);border-radius:8px;padding:12px;margin-bottom:8px}
+.thi-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.thi-date{font-size:11px;color:var(--mt)}
+.thi-total{font-size:14px;font-weight:700;color:var(--gold)}
+.thi-del{background:none;border:none;color:var(--mt);cursor:pointer;font-size:13px;padding:2px 6px}
+.thi-rows{font-size:11px;color:#b0bec5;line-height:1.8}
 </style>
 </head>
 <body>
 
 <div class="hdr">
   <h1>Chip Grade ID</h1>
-  <div class="sub">eMMC / UFS · PH Market Checker · v4.0</div>
+  <div class="sub">eMMC / UFS · PH Market Checker · v5.0</div>
   <div class="madeby">Made by <b>amats211</b> · Free for all 🇵🇭</div>
   <div class="hdr-btns">
     <button class="donate-hdr" onclick="openDonate()">💙 Support via GCash</button>
@@ -236,6 +286,7 @@ body{font-family:'Courier New',monospace;background:var(--bg);color:var(--tx);mi
   <button class="tb" onclick="tab('history')">HISTORY</button>
   <button class="tb" onclick="tab('prices')">MY PRICES</button>
   <button class="tb" onclick="tab('ref')">REFERENCE</button>
+  <button class="tb" onclick="tab('tally')">TALLY</button>
   <button class="tb" onclick="tab('about')">INFO</button>
 </div>
 
@@ -373,19 +424,73 @@ body{font-family:'Courier New',monospace;background:var(--bg);color:var(--tx);mi
   </div>
 </div>
 
+
+<!-- ══════ TALLY ══════ -->
+<div class="tc" id="tab-tally">
+  <div class="tally-header">
+    <h2>📊 Chip Tally Sheet</h2>
+    <p>Enter price per piece and quantity (PCS) for each grade. Totals compute automatically. Use the buyer selector to auto-fill prices.</p>
+  </div>
+
+  <!-- Buyer auto-fill selector -->
+  <div class="tally-buyer-row">
+    <select class="tally-buyer-sel" id="tallyBuyerSel" onchange="tallyFillBuyer()">
+      <option value="">— Select buyer to auto-fill prices —</option>
+    </select>
+    <button class="tally-btn-sm tally-btn-clear" onclick="tallyClear()">Clear</button>
+  </div>
+
+  <!-- Grade rows: A1–A5 -->
+  <table class="tally-table" id="tallyTable">
+    <thead>
+      <tr>
+        <th style="width:28%">CODE</th>
+        <th style="width:26%">PRICE (₱)</th>
+        <th style="width:18%">PCS</th>
+        <th style="width:28%">TOTAL (₱)</th>
+      </tr>
+    </thead>
+    <tbody id="tallyTbody"></tbody>
+  </table>
+
+  <!-- Grand total box -->
+  <div class="tally-grand-box">
+    <div class="tally-grand-label">Grand Total</div>
+    <div class="tally-grand-val" id="tallyGrandVal">₱0</div>
+    <div class="tally-grand-pcs" id="tallyGrandPcs">0 pieces total</div>
+  </div>
+
+  <!-- Action buttons -->
+  <div class="tally-action-row">
+    <button class="btn btn-primary btn-sm tally-btn-sm" style="flex:1;padding:10px;font-size:11px;letter-spacing:1px" onclick="tallySaveSession()">💾 Save Session</button>
+    <button class="btn btn-outline btn-sm tally-btn-sm" style="flex:1;padding:10px;font-size:11px;letter-spacing:1px" onclick="tallyShareText()">📤 Share as Text</button>
+    <button class="btn btn-outline btn-sm tally-btn-sm" style="flex:1;padding:10px;font-size:11px;letter-spacing:1px" onclick="tallyClear()">🗑 Clear All</button>
+  </div>
+  <div class="tally-saved-note" id="tallySavedNote">✓ Session saved!</div>
+
+  <!-- Saved tally history -->
+  <div class="sct" style="margin-top:8px">
+    Saved Sessions
+    <button class="lkb" onclick="tallyClearHistory()">CLEAR ALL</button>
+  </div>
+  <div id="tallyHistoryList"></div>
+</div>
+
 <!-- ══════ INFO ══════ -->
 <div class="tc" id="tab-about">
 
   <div class="what-new">
-    <h3>What's New — v4.0</h3>
+    <h3>What's New — v5.0</h3>
     <ul>
-      <li>Bug fix: suggestion tap/click now works correctly on all devices</li>
-      <li>Database rebuilt from new clear EMCP reference charts (images 1–3)</li>
-      <li>A1=16GB · A2=32GB · A3=64GB · A4=128GB · A5=256GB classification</li>
+      <li>NEW: Tally Sheet tab — input PCS per grade/storage and get instant totals</li>
+      <li>NEW: Auto-fill tally prices from any saved Buyer with one tap</li>
+      <li>NEW: Save tally sessions with date, buyer name, and grand total</li>
+      <li>NEW: Share tally as formatted text — paste into Messenger, Viber, or Notes</li>
+      <li>NEW: Tally session history — view, browse, and delete past sessions</li>
+      <li>Bug fix: Tally row oninput used safe data-key attribute (no inline string args)</li>
+      <li>Bug fix: Suggestion tap/click works correctly on all devices (v4.0)</li>
+      <li>Database rebuilt from new EMCP reference charts — A1=16GB · A2=32GB · A3=64GB · A4=128GB · A5=256GB</li>
       <li>New chips added: JY932/957/977/950/037/008, JZ094/006, 16EMCP08/16, JZ385/478/481/387 and more</li>
-      <li>All chip codes verified against 5 reference images for accuracy</li>
-      <li>Suggestion dropdown bug fixed (JSON.stringify safe escaping)</li>
-      <li>Duplicate chips removed, storage suffix map verified</li>
     </ul>
   </div>
 
@@ -433,7 +538,7 @@ body{font-family:'Courier New',monospace;background:var(--bg);color:var(--tx);mi
     <a href="https://www.facebook.com/jay.pidazo" target="_blank">facebook.com/jay.pidazo</a></p>
   </div>
 
-  <div class="ft">Made by amats211 · v4.0 · Free for all · 🇵🇭</div>
+  <div class="ft">Made by amats211 · v5.0 · Free for all · 🇵🇭</div>
 </div>
 
 <!-- LIGHTBOX -->
@@ -766,7 +871,7 @@ function getSugs(partial) {
 
 // ── TABS ───────────────────────────────────────────────────────
 function tab(t) {
-  var tabNames = ['checker','buyers','ncdb','history','prices','ref','about'];
+  var tabNames = ['checker','buyers','ncdb','history','prices','ref','tally','about'];
   var btns = document.querySelectorAll('.tb');
   var panes = document.querySelectorAll('.tc');
   for (var i=0; i<btns.length; i++) {
@@ -776,6 +881,7 @@ function tab(t) {
     panes[j].classList.toggle('on', panes[j].id === 'tab-'+t);
   }
   if (t === 'history') renderHist();
+  if (t === 'tally')   initTallyTab();
   if (t === 'prices')  renderPrices();
   if (t === 'ncdb')    renderNcDB();
   if (t === 'buyers')  renderBuyers();
@@ -1322,9 +1428,292 @@ function openLink(url) {
   window.open(url, '_blank');
 }
 
+
+// ════════════════════════════════════════════════════════════════
+//  TALLY SHEET
+// ════════════════════════════════════════════════════════════════
+
+// Row definitions: grade rows then non-code rows
+var TALLY_ROWS = [
+  { key:'A1', label:'A1', sub:'(A- / 16GB)', section:'grade', priceKey:'A1' },
+  { key:'A2', label:'A2', sub:'(A+ / 32GB)', section:'grade', priceKey:'A2' },
+  { key:'A3', label:'A3', sub:'(A++ / 64GB)', section:'grade', priceKey:'A3' },
+  { key:'A4', label:'A4', sub:'(A+++ / 128GB)', section:'grade', priceKey:'A4' },
+  { key:'A5', label:'A5', sub:'(A++++ / 256GB)', section:'grade', priceKey:'A5' },
+  { key:'nc16',  label:'16GB',  sub:'Non-Code', section:'nc', priceKey:'16GB' },
+  { key:'nc32',  label:'32GB',  sub:'Non-Code', section:'nc', priceKey:'32GB' },
+  { key:'nc64',  label:'64GB',  sub:'Non-Code', section:'nc', priceKey:'64GB' },
+  { key:'nc128', label:'128GB', sub:'Non-Code', section:'nc', priceKey:'128GB' },
+  { key:'nc256', label:'256GB', sub:'Non-Code', section:'nc', priceKey:'256GB' },
+  { key:'nc512', label:'512GB', sub:'Non-Code', section:'nc', priceKey:'512GB' }
+];
+
+var tallyHistory = safeLoad('cg_tally_hist', []);
+
+// Build the tally table rows
+function tallyBuild() {
+  var tbody = document.getElementById('tallyTbody');
+  if (!tbody) return;
+  var html = '';
+  var lastSection = '';
+  for (var i = 0; i < TALLY_ROWS.length; i++) {
+    var r = TALLY_ROWS[i];
+    // Section separator
+    if (r.section !== lastSection) {
+      var sepLabel = r.section === 'grade' ? 'WITH CODE — GRADED' : 'NON-CODE — BY STORAGE';
+      html += '<tr class="section-sep"><td colspan="4">' + sepLabel + '</td></tr>';
+      lastSection = r.section;
+    }
+    // Get default price from my prices
+    var defPrice = 0;
+    if (r.section === 'grade') {
+      var pg = prices.grades.filter(function(x){ return x.key === r.priceKey; })[0];
+      defPrice = pg ? pg.price : 0;
+    } else {
+      var pc = prices.caps.filter(function(x){ return x.key === r.priceKey; })[0];
+      defPrice = pc ? pc.price : 0;
+    }
+    var dk = r.key;
+    html += '<tr id="trow-' + dk + '">'
+          + '<td><div class="tally-code"><b>' + r.label + '</b><br><span style="font-size:10px;color:var(--mt)">' + r.sub + '</span></div></td>'
+          + '<td><input class="tally-price-inp" type="number" id="tp-' + dk + '" value="' + defPrice + '" min="0" step="1" oninput="tallyCalcRow(this)" data-key="' + dk + '" onfocus="this.select()"></td>'
+          + '<td><input class="tally-pcs-inp" type="number" id="tc-' + dk + '" value="0" min="0" step="1" oninput="tallyCalcRow(this)" data-key="' + dk + '" onfocus="this.select()"></td>'
+          + '<td><span class="tally-total" id="tt-' + dk + '">0</span></td>'
+          + '</tr>';
+  }
+  // Grand total row
+  html += '<tr class="grand-row">'
+        + '<td colspan="2" style="color:var(--gold);font-size:11px;letter-spacing:1px">GRAND TOTAL</td>'
+        + '<td id="tGrandPcsCell" style="text-align:right;color:var(--gold)">0</td>'
+        + '<td id="tGrandTotalCell" style="text-align:right;color:var(--gold);font-size:14px">0</td>'
+        + '</tr>';
+  tbody.innerHTML = html;
+  tallyCalcAll();
+}
+
+// Recalculate one row — accepts a key string or an input element (via data-key)
+function tallyCalcRow(keyOrEl) {
+  var key = (typeof keyOrEl === 'string') ? keyOrEl : (keyOrEl ? keyOrEl.getAttribute('data-key') : '');
+  if (!key) return;
+  var priceEl = document.getElementById('tp-' + key);
+  var pcsEl   = document.getElementById('tc-' + key);
+  var totEl   = document.getElementById('tt-' + key);
+  if (!priceEl || !pcsEl || !totEl) return;
+  var p = parseInt(priceEl.value) || 0;
+  var c = parseInt(pcsEl.value) || 0;
+  var t = p * c;
+  totEl.textContent = t > 0 ? t.toLocaleString() : '0';
+  // Highlight rows with entries
+  var row = document.getElementById('trow-' + key);
+  if (row) {
+    row.style.background = c > 0 ? 'rgba(74,222,128,.04)' : '';
+  }
+  tallyCalcAll();
+}
+
+// Recalculate grand totals
+function tallyCalcAll() {
+  var grandTotal = 0;
+  var grandPcs   = 0;
+  for (var i = 0; i < TALLY_ROWS.length; i++) {
+    var key = TALLY_ROWS[i].key;
+    var p = parseInt((document.getElementById('tp-' + key) || {}).value) || 0;
+    var c = parseInt((document.getElementById('tc-' + key) || {}).value) || 0;
+    grandTotal += p * c;
+    grandPcs   += c;
+  }
+  // Update inline grand row
+  var gc = document.getElementById('tGrandPcsCell');
+  var gt = document.getElementById('tGrandTotalCell');
+  if (gc) gc.textContent = grandPcs;
+  if (gt) gt.textContent = grandTotal > 0 ? grandTotal.toLocaleString() : '0';
+  // Update grand total box
+  var gv = document.getElementById('tallyGrandVal');
+  var gp = document.getElementById('tallyGrandPcs');
+  if (gv) gv.textContent = '₱' + (grandTotal > 0 ? grandTotal.toLocaleString() : '0');
+  if (gp) gp.textContent = grandPcs + ' piece' + (grandPcs !== 1 ? 's' : '') + ' total';
+}
+
+// Fill prices from selected buyer
+function tallyFillBuyer() {
+  var sel = document.getElementById('tallyBuyerSel');
+  if (!sel || !sel.value) return;
+  var bName = sel.value;
+  var buyer = null;
+  for (var i = 0; i < buyers.length; i++) {
+    if (buyers[i].name === bName) { buyer = buyers[i]; break; }
+  }
+  if (!buyer || !buyer.prices) return;
+  for (var j = 0; j < TALLY_ROWS.length; j++) {
+    var r = TALLY_ROWS[j];
+    var el = document.getElementById('tp-' + r.key);
+    if (!el) continue;
+    var bprice = buyer.prices[r.priceKey];
+    if (bprice && parseInt(bprice) > 0) {
+      el.value = parseInt(bprice);
+    }
+    tallyCalcRow(r.key);
+  }
+}
+
+// Populate buyer dropdown
+function tallyPopulateBuyerSel() {
+  var sel = document.getElementById('tallyBuyerSel');
+  if (!sel) return;
+  var current = sel.value;
+  sel.innerHTML = '<option value="">— Select buyer to auto-fill prices —</option>';
+  for (var i = 0; i < buyers.length; i++) {
+    var opt = document.createElement('option');
+    opt.value = buyers[i].name;
+    opt.textContent = buyers[i].name;
+    if (buyers[i].name === current) opt.selected = true;
+    sel.appendChild(opt);
+  }
+}
+
+// Clear all PCS inputs (keep prices)
+function tallyClear() {
+  if (!confirm('Clear all quantities? Prices will be kept.')) return;
+  for (var i = 0; i < TALLY_ROWS.length; i++) {
+    var el = document.getElementById('tc-' + TALLY_ROWS[i].key);
+    if (el) el.value = '0';
+    var row = document.getElementById('trow-' + TALLY_ROWS[i].key);
+    if (row) row.style.background = '';
+    var totEl = document.getElementById('tt-' + TALLY_ROWS[i].key);
+    if (totEl) totEl.textContent = '0';
+  }
+  tallyCalcAll();
+}
+
+// Save current session to history
+function tallySaveSession() {
+  var rows = [];
+  var grandTotal = 0;
+  var grandPcs = 0;
+  for (var i = 0; i < TALLY_ROWS.length; i++) {
+    var r = TALLY_ROWS[i];
+    var p = parseInt((document.getElementById('tp-' + r.key) || {}).value) || 0;
+    var c = parseInt((document.getElementById('tc-' + r.key) || {}).value) || 0;
+    if (c > 0) {
+      rows.push({ label: r.label, sub: r.sub, price: p, pcs: c, total: p * c });
+      grandTotal += p * c;
+      grandPcs += c;
+    }
+  }
+  if (!rows.length) { alert('No quantities entered yet.'); return; }
+  var session = {
+    id: uid(),
+    date: new Date().toLocaleString('en-PH'),
+    rows: rows,
+    grandTotal: grandTotal,
+    grandPcs: grandPcs,
+    buyer: (document.getElementById('tallyBuyerSel') || {}).value || ''
+  };
+  tallyHistory = [session].concat(tallyHistory).slice(0, 20);
+  safeSave('cg_tally_hist', tallyHistory);
+  var note = document.getElementById('tallySavedNote');
+  if (note) { note.classList.add('on'); setTimeout(function(){ note.classList.remove('on'); }, 2500); }
+  renderTallyHistory();
+}
+
+// Share as text (copy to clipboard)
+function tallyShareText() {
+  var lines = ['=== CHIP TALLY SHEET ==='];
+  lines.push(new Date().toLocaleString('en-PH'));
+  var buyerSel = document.getElementById('tallyBuyerSel');
+  if (buyerSel && buyerSel.value) lines.push('Buyer: ' + buyerSel.value);
+  lines.push('');
+  lines.push('--- WITH CODE ---');
+  var grandTotal = 0;
+  var grandPcs = 0;
+  for (var i = 0; i < TALLY_ROWS.length; i++) {
+    var r = TALLY_ROWS[i];
+    var p = parseInt((document.getElementById('tp-' + r.key) || {}).value) || 0;
+    var c = parseInt((document.getElementById('tc-' + r.key) || {}).value) || 0;
+    if (r.section === 'nc' && i === 5) lines.push('');  // add separator before NC
+    if (r.section === 'nc' && i === 5) lines.push('--- NON-CODE ---');
+    if (c > 0) {
+      lines.push(r.label + ' ' + r.sub + ' x' + c + ' @ ₱' + p + ' = ₱' + (p*c).toLocaleString());
+      grandTotal += p * c;
+      grandPcs += c;
+    }
+  }
+  lines.push('');
+  lines.push('Total Pieces: ' + grandPcs);
+  lines.push('GRAND TOTAL: ₱' + grandTotal.toLocaleString());
+  lines.push('');
+  lines.push('Generated by Chip Grade ID (amats211)');
+  var text = lines.join('\n');
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(text).then(function(){
+      alert('Tally text copied! Paste it in Messenger, Notes, etc.');
+    }).catch(function(){ fallbackCopy(text); alert('Copied to clipboard!'); });
+  } else {
+    fallbackCopy(text);
+    alert('Tally text copied! Paste it in Messenger, Notes, etc.');
+  }
+}
+
+// Render saved session history
+function renderTallyHistory() {
+  var el = document.getElementById('tallyHistoryList');
+  if (!el) return;
+  if (!tallyHistory.length) {
+    el.innerHTML = '<div class="emp">No saved sessions yet.</div>';
+    return;
+  }
+  var html = '';
+  for (var i = 0; i < tallyHistory.length; i++) {
+    var s = tallyHistory[i];
+    var rowLines = '';
+    for (var j = 0; j < s.rows.length; j++) {
+      var rw = s.rows[j];
+      rowLines += rw.label + ' x' + rw.pcs + ' @ ₱' + rw.price + ' = ₱' + rw.total.toLocaleString() + '  ';
+    }
+    var buyerStr = s.buyer ? ' · ' + s.buyer : '';
+    html += '<div class="tally-history-item">'
+          + '<div class="thi-header">'
+          + '<div><div class="thi-date">' + s.date + buyerStr + '</div>'
+          + '<div style="font-size:11px;color:var(--mt);margin-top:2px">' + s.grandPcs + ' pcs</div></div>'
+          + '<div style="display:flex;align-items:center;gap:8px">'
+          + '<div class="thi-total">₱' + s.grandTotal.toLocaleString() + '</div>'
+          + '<button class="thi-del" data-tid="' + s.id + '" onclick="tallyDelHist(this)">🗑</button>'
+          + '</div></div>'
+          + '<div class="thi-rows">' + rowLines + '</div>'
+          + '</div>';
+  }
+  el.innerHTML = html;
+}
+
+function tallyDelHist(btn) {
+  var id = btn.getAttribute('data-tid');
+  tallyHistory = tallyHistory.filter(function(x){ return x.id !== id; });
+  safeSave('cg_tally_hist', tallyHistory);
+  renderTallyHistory();
+}
+
+function tallyClearHistory() {
+  if (!confirm('Clear all saved tally sessions?')) return;
+  tallyHistory = [];
+  safeSave('cg_tally_hist', tallyHistory);
+  renderTallyHistory();
+}
+
+// Called when tally tab is opened
+function initTallyTab() {
+  tallyPopulateBuyerSel();
+  // Only build table if empty (first time)
+  var tbody = document.getElementById('tallyTbody');
+  if (!tbody || !tbody.innerHTML.trim()) {
+    tallyBuild();
+  }
+  renderTallyHistory();
+}
+
 // ── INIT ──────────────────────────────────────────────────────
 renderHist();
 renderBuyers();
+renderTallyHistory();
 
 </script>
 </body>
