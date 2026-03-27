@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Admin · Chip Grade ID</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0a0e1a;--sf:#0d1525;--sf2:#101e30;--br:#1e3a5f;
+  --tx:#e0e8f0;--mt:#607d8b;--ac:#4fc3f7;
+  --gold:#ffd700;--green:#4ade80;--red:#ef4444;--purple:#c084fc;
+}
+body{font-family:'Courier New',monospace;background:var(--bg);color:var(--tx);min-height:100vh;padding:0}
+
+/* LOGIN */
+#loginScreen{
+  display:flex;align-items:center;justify-content:center;
+  min-height:100vh;padding:20px;
+}
+.login-box{
+  background:var(--sf);border:1px solid var(--br);border-radius:14px;
+  padding:28px 24px;width:100%;max-width:320px;text-align:center;
+}
+.login-icon{font-size:36px;margin-bottom:10px}
+.login-title{font-size:16px;font-weight:700;color:var(--ac);letter-spacing:3px;text-transform:uppercase;margin-bottom:4px}
+.login-sub{font-size:11px;color:var(--mt);letter-spacing:1px;margin-bottom:20px}
+.login-input{
+  width:100%;background:var(--sf2);border:1px solid var(--br);border-radius:8px;
+  padding:13px 14px;color:var(--ac);font-family:inherit;font-size:18px;
+  letter-spacing:4px;text-align:center;outline:none;margin-bottom:10px;
+}
+.login-input:focus{border-color:var(--ac)}
+.login-input::placeholder{color:#263a4e;letter-spacing:1px;font-size:13px}
+.login-btn{
+  width:100%;background:var(--ac);color:#0a0e1a;border:none;border-radius:8px;
+  padding:13px;font-family:inherit;font-size:12px;font-weight:700;
+  letter-spacing:2px;text-transform:uppercase;cursor:pointer;
+}
+.login-btn:active{opacity:.85}
+.login-err{color:var(--red);font-size:11px;margin-top:8px;display:none;letter-spacing:1px}
+.login-err.on{display:block}
+.login-hint{font-size:10px;color:var(--mt);margin-top:12px;line-height:1.6}
+
+/* DASHBOARD */
+#dashboard{display:none;padding:0}
+.dash-header{
+  background:#0a1220;border-bottom:1px solid var(--br);
+  padding:14px 16px;display:flex;align-items:center;justify-content:space-between;
+}
+.dash-title{font-size:15px;font-weight:700;color:var(--ac);letter-spacing:2px;text-transform:uppercase}
+.dash-sub{font-size:10px;color:var(--mt);margin-top:2px}
+.logout-btn{
+  background:none;border:1px solid var(--br);border-radius:6px;
+  padding:6px 12px;color:var(--mt);font-family:inherit;font-size:10px;
+  letter-spacing:1px;text-transform:uppercase;cursor:pointer;
+}
+.logout-btn:hover{color:var(--red);border-color:var(--red)}
+
+.dash-body{padding:14px}
+
+/* STAT CARDS */
+.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+.stat-card{
+  background:var(--sf);border:1px solid var(--br);border-radius:10px;
+  padding:14px 12px;text-align:center;
+}
+.stat-val{font-size:26px;font-weight:700;color:var(--gold);letter-spacing:1px;margin-bottom:2px}
+.stat-label{font-size:10px;color:var(--mt);letter-spacing:1.5px;text-transform:uppercase}
+.stat-card.wide{grid-column:1/-1}
+.stat-card.c-green .stat-val{color:var(--green)}
+.stat-card.c-purple .stat-val{color:var(--purple)}
+.stat-card.c-blue .stat-val{color:var(--ac)}
+
+/* SECTIONS */
+.sec{background:var(--sf);border:1px solid var(--br);border-radius:10px;padding:14px;margin-bottom:12px}
+.sec-title{font-size:11px;color:var(--ac);letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--br);display:flex;justify-content:space-between;align-items:center}
+.sec-title span{font-size:10px;color:var(--mt);letter-spacing:1px;text-transform:none;font-weight:normal}
+
+/* TABLES */
+.data-table{width:100%;border-collapse:collapse}
+.data-table th{font-size:10px;color:var(--mt);letter-spacing:1px;text-transform:uppercase;padding:6px 0;text-align:left;border-bottom:1px solid var(--br)}
+.data-table th:last-child{text-align:right}
+.data-table td{font-size:12px;padding:7px 0;border-bottom:1px solid rgba(30,58,95,.4);color:#b0bec5}
+.data-table td:last-child{text-align:right;color:var(--gold);font-weight:700}
+.data-table tr:last-child td{border-bottom:none}
+.bar-wrap{display:flex;align-items:center;gap:8px}
+.bar-track{flex:1;height:4px;background:var(--sf2);border-radius:2px;overflow:hidden}
+.bar-fill{height:100%;border-radius:2px;background:var(--ac);transition:width .4s ease}
+
+/* LIVE LOG */
+.log-entry{
+  padding:8px 10px;border-bottom:1px solid rgba(30,58,95,.3);
+  font-size:11px;color:#b0bec5;display:flex;justify-content:space-between;
+  align-items:flex-start;gap:8px;
+}
+.log-entry:last-child{border-bottom:none}
+.log-event{color:var(--tx);font-weight:600}
+.log-time{color:var(--mt);flex-shrink:0;font-size:10px}
+.log-device{font-size:10px;color:var(--mt)}
+.badge{display:inline-block;padding:1px 6px;border-radius:4px;font-size:10px;font-weight:700;letter-spacing:.5px}
+.badge-check{background:rgba(79,195,247,.15);color:var(--ac)}
+.badge-open{background:rgba(74,222,128,.15);color:var(--green)}
+.badge-tally{background:rgba(192,132,252,.15);color:var(--purple)}
+.badge-buyer{background:rgba(255,215,0,.15);color:var(--gold)}
+
+/* GOATCOUNTER EMBED */
+.gc-frame{width:100%;height:500px;border:1px solid var(--br);border-radius:8px;margin-top:4px}
+
+/* REFRESH */
+.refresh-btn{
+  background:none;border:1px solid var(--br);border-radius:6px;
+  padding:5px 10px;color:var(--mt);font-family:inherit;font-size:10px;
+  letter-spacing:1px;text-transform:uppercase;cursor:pointer;
+}
+.refresh-btn:hover{color:var(--ac);border-color:var(--ac)}
+
+/* LOADING */
+.loading{text-align:center;padding:24px;color:var(--mt);font-size:12px}
+.dot-anim::after{content:'.';animation:dots 1.5s infinite}
+@keyframes dots{0%,100%{content:'.'}33%{content:'..'}66%{content:'...'}}
+
+/* NOTE CARD */
+.note-card{
+  background:rgba(255,215,0,.06);border:1px solid rgba(255,215,0,.2);
+  border-radius:8px;padding:12px;margin-bottom:12px;font-size:11px;
+  color:#b0a060;line-height:1.7;
+}
+.note-card b{color:var(--gold)}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════ LOGIN ══════════════════ -->
+<div id="loginScreen">
+  <div class="login-box">
+    <div class="login-icon">🔐</div>
+    <div class="login-title">Admin Access</div>
+    <div class="login-sub">Chip Grade ID · amats211</div>
+    <input type="password" class="login-input" id="pwInput" placeholder="Enter password" autocomplete="off"
+      onkeydown="if(event.key==='Enter')doLogin()">
+    <button class="login-btn" onclick="doLogin()">ENTER</button>
+    <div class="login-err" id="loginErr">⚠ Incorrect password</div>
+    <div class="login-hint">Private admin page — not linked from the public app.</div>
+  </div>
+</div>
+
+<!-- ══════════════════ DASHBOARD ══════════════════ -->
+<div id="dashboard">
+
+  <div class="dash-header">
+    <div>
+      <div class="dash-title">📊 Admin Dashboard</div>
+      <div class="dash-sub">Chip Grade ID · Usage Analytics</div>
+    </div>
+    <button class="logout-btn" onclick="doLogout()">Logout</button>
+  </div>
+
+  <div class="dash-body">
+
+    <!-- Summary stats -->
+    <div class="stat-grid" id="statGrid">
+      <div class="stat-card">
+        <div class="stat-val" id="statTotalViews">—</div>
+        <div class="stat-label">Total Page Views</div>
+      </div>
+      <div class="stat-card c-green">
+        <div class="stat-val" id="statTodayViews">—</div>
+        <div class="stat-label">Views Today</div>
+      </div>
+      <div class="stat-card c-blue">
+        <div class="stat-val" id="statTotalChecks">—</div>
+        <div class="stat-label">Chip Checks</div>
+      </div>
+      <div class="stat-card c-purple">
+        <div class="stat-val" id="statUniqueDevices">—</div>
+        <div class="stat-label">Unique Devices</div>
+      </div>
+      <div class="stat-card wide">
+        <div class="stat-val" id="statLastSeen" style="font-size:13px;letter-spacing:1px">—</div>
+        <div class="stat-label">Last Activity</div>
+      </div>
+    </div>
+
+    <!-- Setup note -->
+    <div class="note-card" id="setupNote">
+      <b>📋 Setup Required (one-time):</b> This dashboard reads analytics from
+      <b>GoatCounter</b> — a free, privacy-friendly analytics service. You need to:
+      <br><br>
+      1. Go to <b>goatcounter.com</b> → Create a free account<br>
+      2. Site code: <b>chipgradeamats211</b> (or any name you like)<br>
+      3. In GoatCounter settings → API → create an API token<br>
+      4. Click <b>⚙ Configure Analytics</b> below to enter your site code &amp; token<br>
+      5. The main app (<b>index.html</b>) already sends tracking events — no other setup needed
+      <br><br>
+      <b>What gets tracked:</b> page views, chip checks, tab switches, device type, browser, country — all anonymous, no personal data.
+    </div>
+
+    <!-- Configure button -->
+    <div style="margin-bottom:12px;display:flex;gap:8px;flex-wrap:wrap">
+      <button class="refresh-btn" style="flex:1;padding:9px;font-size:11px" onclick="showConfig()">⚙ Configure Analytics</button>
+      <button class="refresh-btn" style="flex:1;padding:9px;font-size:11px" onclick="loadAnalytics()">🔄 Refresh Data</button>
+    </div>
+
+    <!-- Config panel -->
+    <div class="sec" id="configPanel" style="display:none">
+      <div class="sec-title">⚙ GoatCounter Configuration</div>
+      <p style="font-size:11px;color:var(--mt);margin-bottom:12px;line-height:1.6">
+        Get your site code and API token from <a href="https://www.goatcounter.com" target="_blank" style="color:var(--ac)">goatcounter.com</a>
+      </p>
+      <div style="margin-bottom:8px">
+        <label style="font-size:10px;color:var(--mt);letter-spacing:1px;text-transform:uppercase;display:block;margin-bottom:4px">GoatCounter Site Code</label>
+        <input type="text" id="gcSiteCode" placeholder="e.g. chipgradeamats211"
+          style="width:100%;background:var(--sf2);border:1px solid var(--br);border-radius:6px;padding:9px 12px;color:var(--ac);font-family:inherit;font-size:13px;outline:none;margin-bottom:8px">
+      </div>
+      <div style="margin-bottom:12px">
+        <label style="font-size:10px;color:var(--mt);letter-spacing:1px;text-transform:uppercase;display:block;margin-bottom:4px">API Token</label>
+        <input type="password" id="gcToken" placeholder="Paste your GoatCounter API token"
+          style="width:100%;background:var(--sf2);border:1px solid var(--br);border-radius:6px;padding:9px 12px;color:var(--ac);font-family:inherit;font-size:13px;outline:none">
+      </div>
+      <div style="display:flex;gap:8px">
+        <button onclick="saveConfig()" style="flex:1;background:var(--ac);color:#0a0e1a;border:none;border-radius:6px;padding:10px;font-family:inherit;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer">💾 Save</button>
+        <button onclick="document.getElementById('configPanel').style.display='none'" style="flex:1;background:none;border:1px solid var(--br);border-radius:6px;padding:10px;color:var(--mt);font-family:inherit;font-size:11px;letter-spacing:1px;text-transform:uppercase;cursor:pointer">Cancel</button>
+      </div>
+      <div id="configSaved" style="display:none;color:var(--green);font-size:11px;text-align:center;margin-top:8px;letter-spacing:1px">✓ Saved! Click Refresh Data.</div>
+    </div>
+
+    <!-- Live events from local storage (this device) -->
+    <div class="sec">
+      <div class="sec-title">
+        🕐 Recent Events (This Device)
+        <span>Live from app localStorage</span>
+      </div>
+      <div id="liveLog"><div class="loading">Loading<span class="dot-anim"></span></div></div>
+    </div>
+
+    <!-- Top pages / actions -->
+    <div class="sec">
+      <div class="sec-title">
+        📱 Tab Usage (This Device)
+        <span>From app localStorage</span>
+      </div>
+      <div id="tabStats"><div class="loading">Loading<span class="dot-anim"></span></div></div>
+    </div>
+
+    <!-- GoatCounter stats section -->
+    <div class="sec" id="gcSection">
+      <div class="sec-title">
+        🌐 Cross-Device Analytics (GoatCounter)
+        <button class="refresh-btn" onclick="loadAnalytics()">Refresh</button>
+      </div>
+      <div id="gcStats"><div class="loading">Waiting for configuration<span class="dot-anim"></span></div></div>
+    </div>
+
+    <!-- Chip check log -->
+    <div class="sec">
+      <div class="sec-title">
+        🔍 Most Checked Chips (This Device)
+        <span>From app localStorage</span>
+      </div>
+      <div id="chipLog"><div class="loading">Loading<span class="dot-anim"></span></div></div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+'use strict';
+
+// ── CONFIG ──────────────────────────────────────────────────────
+var ADMIN_PW_HASH = '117e3776fa1c17de09530a6e4af7861280075bab47264285d1565de4b1208f66'; // "password" sha256 — change this!
+// You MUST change the password. Generate SHA-256 of your new password at:
+// https://emn178.github.io/online-tools/sha256.html
+// Then replace the hash above in this file.
+
+var SESSION_KEY = 'cg_admin_session';
+
+// ── SHA-256 (pure JS, no dependencies) ──────────────────────────
+function sha256(str) {
+  function rotRight(val, amount) { return (val >>> amount) | (val << (32 - amount)); }
+  var K = [
+    0x428a2f98,0x71374491,0xb5c0fbcf,0xe9b5dba5,0x3956c25b,0x59f111f1,0x923f82a4,0xab1c5ed5,
+    0xd807aa98,0x12835b01,0x243185be,0x550c7dc3,0x72be5d74,0x80deb1fe,0x9bdc06a7,0xc19bf174,
+    0xe49b69c1,0xefbe4786,0x0fc19dc6,0x240ca1cc,0x2de92c6f,0x4a7484aa,0x5cb0a9dc,0x76f988da,
+    0x983e5152,0xa831c66d,0xb00327c8,0xbf597fc7,0xc6e00bf3,0xd5a79147,0x06ca6351,0x14292967,
+    0x27b70a85,0x2e1b2138,0x4d2c6dfc,0x53380d13,0x650a7354,0x766a0abb,0x81c2c92e,0x92722c85,
+    0xa2bfe8a1,0xa81a664b,0xc24b8b70,0xc76c51a3,0xd192e819,0xd6990624,0xf40e3585,0x106aa070,
+    0x19a4c116,0x1e376c08,0x2748774c,0x34b0bcb5,0x391c0cb3,0x4ed8aa4a,0x5b9cca4f,0x682e6ff3,
+    0x748f82ee,0x78a5636f,0x84c87814,0x8cc70208,0x90befffa,0xa4506ceb,0xbef9a3f7,0xc67178f2
+  ];
+  var H = [0x6a09e667,0xbb67ae85,0x3c6ef372,0xa54ff53a,0x510e527f,0x9b05688c,0x1f83d9ab,0x5be0cd19];
+  var bytes = [];
+  for (var i=0;i<str.length;i++){
+    var c=str.charCodeAt(i);
+    if(c<128) bytes.push(c);
+    else if(c<2048){bytes.push((c>>6)|192);bytes.push((c&63)|128);}
+    else{bytes.push((c>>12)|224);bytes.push(((c>>6)&63)|128);bytes.push((c&63)|128);}
+  }
+  var bitLen=bytes.length*8;
+  bytes.push(0x80);
+  while(bytes.length%64!==56) bytes.push(0);
+  for(var j=7;j>=0;j--) bytes.push((bitLen/(Math.pow(2,j*8)))&0xff);
+  var words=[];
+  for(var k=0;k<bytes.length;k+=4)
+    words.push((bytes[k]<<24)|(bytes[k+1]<<16)|(bytes[k+2]<<8)|bytes[k+3]);
+  for(var blk=0;blk<words.length;blk+=16){
+    var W=words.slice(blk,blk+16);
+    for(var t=16;t<64;t++){
+      var s0=rotRight(W[t-15],7)^rotRight(W[t-15],18)^(W[t-15]>>>3);
+      var s1=rotRight(W[t-2],17)^rotRight(W[t-2],19)^(W[t-2]>>>10);
+      W[t]=(W[t-16]+s0+W[t-7]+s1)|0;
+    }
+    var a=H[0],b=H[1],c=H[2],d=H[3],e=H[4],f=H[5],g=H[6],h=H[7];
+    for(var t2=0;t2<64;t2++){
+      var S1=rotRight(e,6)^rotRight(e,11)^rotRight(e,25);
+      var ch=(e&f)^(~e&g);
+      var temp1=(h+S1+ch+K[t2]+W[t2])|0;
+      var S0=rotRight(a,2)^rotRight(a,13)^rotRight(a,22);
+      var maj=(a&b)^(a&c)^(b&c);
+      var temp2=(S0+maj)|0;
+      h=g;g=f;f=e;e=(d+temp1)|0;d=c;c=b;b=a;a=(temp1+temp2)|0;
+    }
+    H[0]=(H[0]+a)|0;H[1]=(H[1]+b)|0;H[2]=(H[2]+c)|0;H[3]=(H[3]+d)|0;
+    H[4]=(H[4]+e)|0;H[5]=(H[5]+f)|0;H[6]=(H[6]+g)|0;H[7]=(H[7]+h)|0;
+  }
+  var hex='';
+  for(var n=0;n<8;n++){
+    var v=(H[n]>>>0).toString(16);
+    while(v.length<8) v='0'+v;
+    hex+=v;
+  }
+  return hex;
+}
+
+// ── AUTH ────────────────────────────────────────────────────────
+function doLogin() {
+  var pw = document.getElementById('pwInput').value;
+  var hash = sha256(pw);
+  if (hash === ADMIN_PW_HASH) {
+    sessionStorage.setItem(SESSION_KEY, '1');
+    document.getElementById('loginScreen').style.display = 'none';
+    document.getElementById('dashboard').style.display = 'block';
+    loadDashboard();
+  } else {
+    var err = document.getElementById('loginErr');
+    err.classList.add('on');
+    document.getElementById('pwInput').value = '';
+    setTimeout(function(){ err.classList.remove('on'); }, 2500);
+  }
+}
+function doLogout() {
+  sessionStorage.removeItem(SESSION_KEY);
+  location.reload();
+}
+document.getElementById('pwInput').addEventListener('keydown', function(e){
+  if (e.key === 'Enter') doLogin();
+});
+// Auto-login if session active
+if (sessionStorage.getItem(SESSION_KEY) === '1') {
+  document.getElementById('loginScreen').style.display = 'none';
+  document.getElementById('dashboard').style.display = 'block';
+}
+
+// ── CONFIG ──────────────────────────────────────────────────────
+function showConfig() {
+  var panel = document.getElementById('configPanel');
+  panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
+  var cfg = getConfig();
+  if (cfg.siteCode) document.getElementById('gcSiteCode').value = cfg.siteCode;
+  if (cfg.token) document.getElementById('gcToken').value = cfg.token;
+}
+function getConfig() {
+  try {
+    return JSON.parse(localStorage.getItem('cg_admin_cfg') || '{}');
+  } catch(e) { return {}; }
+}
+function saveConfig() {
+  var cfg = {
+    siteCode: document.getElementById('gcSiteCode').value.trim(),
+    token: document.getElementById('gcToken').value.trim()
+  };
+  localStorage.setItem('cg_admin_cfg', JSON.stringify(cfg));
+  document.getElementById('configSaved').style.display = 'block';
+  setTimeout(function(){ document.getElementById('configSaved').style.display='none'; }, 2000);
+}
+
+// ── LOAD DASHBOARD ──────────────────────────────────────────────
+function loadDashboard() {
+  loadLocalStats();
+  loadAnalytics();
+  renderLiveLog();
+  renderTabStats();
+  renderChipLog();
+}
+
+// ── LOCAL STATS (from main app localStorage) ────────────────────
+function loadLocalStats() {
+  var events = getEvents();
+  var today = new Date().toDateString();
+
+  var totalViews  = 0;
+  var todayViews  = 0;
+  var totalChecks = 0;
+  var devices     = {};
+  var lastTime    = null;
+
+  for (var i = 0; i < events.length; i++) {
+    var ev = events[i];
+    totalViews++;
+    if (new Date(ev.ts).toDateString() === today) todayViews++;
+    if (ev.type === 'check') totalChecks++;
+    if (ev.device) devices[ev.device] = 1;
+    if (!lastTime || ev.ts > lastTime) lastTime = ev.ts;
+  }
+
+  setText('statTotalViews',  totalViews || '0');
+  setText('statTodayViews',  todayViews || '0');
+  setText('statTotalChecks', totalChecks || '0');
+  setText('statUniqueDevices', Object.keys(devices).length || '—');
+  setText('statLastSeen', lastTime ? new Date(lastTime).toLocaleString('en-PH') : 'No data yet');
+}
+
+function getEvents() {
+  try {
+    return JSON.parse(localStorage.getItem('cg_admin_events') || '[]');
+  } catch(e) { return []; }
+}
+function setText(id, val) {
+  var el = document.getElementById(id);
+  if (el) el.textContent = val;
+}
+
+// ── LIVE LOG ────────────────────────────────────────────────────
+function renderLiveLog() {
+  var el = document.getElementById('liveLog');
+  var events = getEvents().slice(0, 40).reverse();
+  if (!events.length) {
+    el.innerHTML = '<div style="font-size:12px;color:var(--mt);padding:12px;text-align:center">No events recorded yet.<br><br>Open the main app to start seeing events here.</div>';
+    return;
+  }
+  var badgeMap = {
+    open: 'badge-open', check: 'badge-check',
+    tab: 'badge-open', tally: 'badge-tally', buyer: 'badge-buyer'
+  };
+  var html = '';
+  for (var i = 0; i < events.length; i++) {
+    var ev = events[i];
+    var badge = badgeMap[ev.type] || 'badge-open';
+    var timeStr = new Date(ev.ts).toLocaleTimeString('en-PH', {hour:'2-digit',minute:'2-digit'});
+    var dateStr = new Date(ev.ts).toLocaleDateString('en-PH', {month:'short',day:'numeric'});
+    html += '<div class="log-entry">'
+          + '<div>'
+          + '<div><span class="badge ' + badge + '">' + (ev.type||'view').toUpperCase() + '</span> '
+          + '<span class="log-event">' + sanitize(ev.label || ev.type) + '</span></div>'
+          + '<div class="log-device" style="margin-top:2px">' + sanitize(ev.device || 'Unknown device') + '</div>'
+          + '</div>'
+          + '<div class="log-time">' + dateStr + ' ' + timeStr + '</div>'
+          + '</div>';
+  }
+  el.innerHTML = html;
+}
+
+// ── TAB STATS ───────────────────────────────────────────────────
+function renderTabStats() {
+  var el = document.getElementById('tabStats');
+  var events = getEvents();
+  var counts = {};
+  for (var i = 0; i < events.length; i++) {
+    var lbl = events[i].label || events[i].type;
+    counts[lbl] = (counts[lbl] || 0) + 1;
+  }
+  var pairs = [];
+  for (var k in counts) pairs.push([k, counts[k]]);
+  pairs.sort(function(a,b){ return b[1]-a[1]; });
+  if (!pairs.length) {
+    el.innerHTML = '<div style="font-size:12px;color:var(--mt);padding:8px">No data yet.</div>';
+    return;
+  }
+  var max = pairs[0][1];
+  var html = '<table class="data-table"><thead><tr><th>Event / Tab</th><th>Count</th></tr></thead><tbody>';
+  for (var j = 0; j < Math.min(pairs.length, 12); j++) {
+    var pct = max > 0 ? Math.round((pairs[j][1]/max)*100) : 0;
+    html += '<tr><td>'
+          + '<div class="bar-wrap">'
+          + '<span style="min-width:110px;font-size:12px">' + sanitize(pairs[j][0]) + '</span>'
+          + '<div class="bar-track"><div class="bar-fill" style="width:'+pct+'%"></div></div>'
+          + '</div></td>'
+          + '<td>' + pairs[j][1] + '</td></tr>';
+  }
+  html += '</tbody></table>';
+  el.innerHTML = html;
+}
+
+// ── CHIP CHECK LOG ───────────────────────────────────────────────
+function renderChipLog() {
+  var el = document.getElementById('chipLog');
+  var events = getEvents();
+  var chips = {};
+  for (var i = 0; i < events.length; i++) {
+    if (events[i].type === 'check' && events[i].chip) {
+      chips[events[i].chip] = (chips[events[i].chip] || 0) + 1;
+    }
+  }
+  var pairs = [];
+  for (var k in chips) pairs.push([k, chips[k]]);
+  pairs.sort(function(a,b){ return b[1]-a[1]; });
+  if (!pairs.length) {
+    el.innerHTML = '<div style="font-size:12px;color:var(--mt);padding:8px">No chip checks recorded yet.</div>';
+    return;
+  }
+  var html = '<table class="data-table"><thead><tr><th>Chip Model</th><th>Checks</th></tr></thead><tbody>';
+  for (var j = 0; j < Math.min(pairs.length, 15); j++) {
+    html += '<tr><td style="font-family:monospace;letter-spacing:.5px">' + sanitize(pairs[j][0]) + '</td><td>' + pairs[j][1] + '</td></tr>';
+  }
+  html += '</tbody></table>';
+  el.innerHTML = html;
+}
+
+// ── GOATCOUNTER API ─────────────────────────────────────────────
+function loadAnalytics() {
+  loadLocalStats();
+  renderLiveLog();
+  renderTabStats();
+  renderChipLog();
+
+  var cfg = getConfig();
+  var gcEl = document.getElementById('gcStats');
+
+  if (!cfg.siteCode || !cfg.token) {
+    gcEl.innerHTML = '<div style="font-size:12px;color:var(--mt);padding:12px;line-height:1.7">'
+      + 'GoatCounter not configured yet.<br>'
+      + 'Click <b style="color:var(--ac)">⚙ Configure Analytics</b> above to set up cross-device tracking.<br><br>'
+      + '<b style="color:var(--gold)">Why GoatCounter?</b> Free, no cookies, works with GitHub Pages, '
+      + 'shows real device types, browsers, countries and page views from ALL users — not just this device.'
+      + '</div>';
+    return;
+  }
+
+  gcEl.innerHTML = '<div class="loading">Fetching from GoatCounter<span class="dot-anim"></span></div>';
+
+  // Fetch hits from GoatCounter API
+  var url = 'https://' + cfg.siteCode + '.goatcounter.com/api/v0/stats/hits?limit=10&start='
+    + formatDate(new Date(Date.now() - 30*24*60*60*1000))
+    + '&end=' + formatDate(new Date());
+
+  fetch(url, {
+    headers: {
+      'Authorization': 'Bearer ' + cfg.token,
+      'Content-Type': 'application/json'
+    }
+  })
+  .then(function(r) {
+    if (!r.ok) throw new Error('HTTP ' + r.status + ' — check site code and token');
+    return r.json();
+  })
+  .then(function(data) {
+    renderGCStats(data);
+  })
+  .catch(function(err) {
+    gcEl.innerHTML = '<div style="font-size:12px;color:var(--red);padding:12px;line-height:1.7">'
+      + '⚠ Could not fetch GoatCounter data:<br><b>' + sanitize(err.message) + '</b><br><br>'
+      + 'Check: site code is correct · API token is valid · GoatCounter account is active.'
+      + '</div>';
+  });
+
+  // Also fetch browser stats
+  fetchGCBrowsers(cfg);
+}
+
+function fetchGCBrowsers(cfg) {
+  var url = 'https://' + cfg.siteCode + '.goatcounter.com/api/v0/stats/browsers?limit=8';
+  fetch(url, { headers: { 'Authorization': 'Bearer ' + cfg.token } })
+  .then(function(r){ return r.json(); })
+  .then(function(data){ renderGCBrowsers(data); })
+  .catch(function(){});
+}
+
+function renderGCStats(data) {
+  var gcEl = document.getElementById('gcStats');
+  if (!data || !data.hits || !data.hits.length) {
+    gcEl.innerHTML = '<div style="font-size:12px;color:var(--mt);padding:12px">No data from GoatCounter yet. Make sure the main app is sending tracking events.</div>';
+    return;
+  }
+  var total = 0;
+  var html = '<p style="font-size:11px;color:var(--mt);margin-bottom:10px;letter-spacing:.5px">Last 30 days · from GoatCounter</p>';
+  html += '<table class="data-table"><thead><tr><th>Page / Event</th><th>Views</th></tr></thead><tbody>';
+  for (var i = 0; i < data.hits.length; i++) {
+    var h = data.hits[i];
+    total += h.count;
+    html += '<tr><td>' + sanitize(h.path) + '</td><td>' + h.count + '</td></tr>';
+  }
+  html += '</tbody></table>';
+  html += '<div style="margin-top:10px;padding-top:10px;border-top:1px solid var(--br);font-size:12px;color:var(--gold);font-weight:700">Total (shown): ' + total + ' views</div>';
+  gcEl.innerHTML = html;
+
+  // Update total views card with GC data
+  var totalEl = document.getElementById('statTotalViews');
+  if (totalEl) totalEl.textContent = total;
+  document.getElementById('setupNote') && (document.getElementById('setupNote').style.display = 'none');
+}
+
+function renderGCBrowsers(data) {
+  if (!data || !data.browsers) return;
+  var gcEl = document.getElementById('gcStats');
+  if (!gcEl) return;
+  var existing = gcEl.innerHTML;
+  var html = '<div style="margin-top:12px"><div style="font-size:10px;color:var(--mt);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px;padding-top:10px;border-top:1px solid var(--br)">Browsers / Devices</div>';
+  html += '<table class="data-table"><thead><tr><th>Browser</th><th>%</th></tr></thead><tbody>';
+  for (var i = 0; i < Math.min(data.browsers.length, 8); i++) {
+    var b = data.browsers[i];
+    html += '<tr><td>' + sanitize(b.browser) + '</td><td>' + b.count_pct + '%</td></tr>';
+  }
+  html += '</tbody></table></div>';
+  gcEl.innerHTML = existing + html;
+}
+
+function formatDate(d) {
+  return d.getFullYear() + '-'
+    + String(d.getMonth()+1).padStart(2,'0') + '-'
+    + String(d.getDate()).padStart(2,'0');
+}
+
+// ── HELPERS ─────────────────────────────────────────────────────
+function sanitize(str) {
+  return String(str || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// ── AUTO-LOAD IF ALREADY AUTHENTICATED ──────────────────────────
+if (sessionStorage.getItem(SESSION_KEY) === '1') {
+  loadDashboard();
+}
+</script>
+</body>
+</html>

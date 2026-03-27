@@ -1715,6 +1715,106 @@ renderHist();
 renderBuyers();
 renderTallyHistory();
 
+// ════════════════════════════════════════════════════════════════
+//  ANALYTICS TRACKING — feeds the admin dashboard
+//  All data stored locally + sent to GoatCounter if configured
+// ════════════════════════════════════════════════════════════════
+var MAX_EVENTS = 500;
+
+function getDevice() {
+  var ua = navigator.userAgent || '';
+  var dev = /Mobile|Android|iPhone|iPad/.test(ua) ? 'Mobile' : 'Desktop';
+  var browser = 'Unknown';
+  if (/Chrome\//.test(ua) && !/Edge|Edg|OPR/.test(ua)) browser = 'Chrome';
+  else if (/Firefox\//.test(ua)) browser = 'Firefox';
+  else if (/Safari\//.test(ua) && !/Chrome/.test(ua)) browser = 'Safari';
+  else if (/Edg\//.test(ua)) browser = 'Edge';
+  else if (/OPR\//.test(ua)) browser = 'Opera';
+  var os = 'Unknown';
+  if (/Android/.test(ua)) os = 'Android';
+  else if (/iPhone|iPad/.test(ua)) os = 'iOS';
+  else if (/Windows/.test(ua)) os = 'Windows';
+  else if (/Mac/.test(ua)) os = 'macOS';
+  else if (/Linux/.test(ua)) os = 'Linux';
+  return dev + ' · ' + browser + ' · ' + os;
+}
+
+function trackEvent(type, label, extra) {
+  try {
+    var events = JSON.parse(localStorage.getItem('cg_admin_events') || '[]');
+    var ev = {
+      type:   type,
+      label:  label || type,
+      device: getDevice(),
+      ts:     new Date().toISOString()
+    };
+    if (extra) {
+      for (var k in extra) ev[k] = extra[k];
+    }
+    events.unshift(ev);
+    if (events.length > MAX_EVENTS) events = events.slice(0, MAX_EVENTS);
+    localStorage.setItem('cg_admin_events', JSON.stringify(events));
+  } catch(e) {}
+
+  // Also send to GoatCounter if configured
+  try {
+    var cfg = JSON.parse(localStorage.getItem('cg_admin_cfg') || '{}');
+    if (cfg.siteCode && cfg.token) {
+      var path = '/' + type + (label ? '/' + label.replace(/\s+/g, '-').toLowerCase() : '');
+      fetch('https://' + cfg.siteCode + '.goatcounter.com/api/v0/count', {
+        method: 'POST',
+        headers: {
+          'Authorization': 'Bearer ' + cfg.token,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ hits: [{ path: path }] })
+      }).catch(function(){});
+    }
+  } catch(e) {}
+}
+
+// Track app open
+trackEvent('open', 'App Opened');
+
+// Wrap the tab() function to also track tab switches
+var _origTab = tab;
+tab = function(t) {
+  _origTab(t);
+  trackEvent('tab', 'Tab: ' + t);
+};
+
+// Wrap runCheck to track chip checks
+var _origRunCheck = runCheck;
+runCheck = function() {
+  var chip = (document.getElementById('ci') || {}).value || '';
+  _origRunCheck();
+  if (chip.trim()) {
+    trackEvent('check', 'Check: ' + chip.trim().toUpperCase(), { chip: chip.trim().toUpperCase() });
+  }
+};
+
+// Wrap addToNcDB to track non-code saves
+var _origAddToNcDB = addToNcDB;
+addToNcDB = function() {
+  _origAddToNcDB();
+  trackEvent('nc-save', 'Non-Code Saved: ' + currentChip);
+};
+
+// Wrap saveBuyer to track buyer adds
+var _origSaveBuyer = saveBuyer;
+saveBuyer = function() {
+  _origSaveBuyer();
+  trackEvent('buyer', 'Buyer Saved');
+};
+
+// Wrap tallySaveSession to track tally saves
+var _origTallySave = tallySaveSession;
+tallySaveSession = function() {
+  _origTallySave();
+  trackEvent('tally', 'Tally Session Saved');
+};
+
+
 </script>
 </body>
 </html>
