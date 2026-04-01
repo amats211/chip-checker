@@ -266,6 +266,58 @@ body{font-family:'Courier New',monospace;background:var(--bg);color:var(--tx);mi
 .thi-total{font-size:14px;font-weight:700;color:var(--gold)}
 .thi-del{background:none;border:none;color:var(--mt);cursor:pointer;font-size:13px;padding:2px 6px}
 .thi-rows{font-size:11px;color:#b0bec5;line-height:1.8}
+
+/* ══ GUIDE TAB ═══════════════════════════════════════════════════ */
+.guide-hero{background:linear-gradient(135deg,#091830 0%,#0a1220 100%);border:1px solid var(--br);border-radius:12px;padding:18px 16px;margin-bottom:14px;text-align:center}
+.guide-hero h2{font-size:15px;color:var(--ac);letter-spacing:2px;text-transform:uppercase;margin-bottom:6px}
+.guide-hero p{font-size:12px;color:#b0bec5;line-height:1.8}
+.guide-hero .platform{display:inline-block;margin-top:10px;padding:4px 12px;background:rgba(79,195,247,.1);border:1px solid rgba(79,195,247,.25);border-radius:20px;font-size:10px;color:var(--ac);letter-spacing:1.5px}
+
+.step-card{background:var(--sf);border:1px solid var(--br);border-radius:10px;padding:14px;margin-bottom:10px;position:relative}
+.step-num{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;background:var(--ac);color:#0a0e1a;border-radius:50%;font-size:12px;font-weight:700;margin-right:8px;flex-shrink:0}
+.step-title{font-size:13px;color:var(--tx);font-weight:700;letter-spacing:.5px;display:flex;align-items:center;margin-bottom:8px}
+.step-body{font-size:12px;color:#b0bec5;line-height:1.9;padding-left:34px}
+.step-body b{color:var(--tx)}
+.step-body .tip{display:block;margin-top:8px;padding:8px 10px;background:rgba(79,195,247,.06);border-left:3px solid var(--ac);border-radius:0 6px 6px 0;font-size:11px;color:#94c5d9;line-height:1.7}
+.step-body .warn{display:block;margin-top:8px;padding:8px 10px;background:rgba(255,215,0,.05);border-left:3px solid var(--gold);border-radius:0 6px 6px 0;font-size:11px;color:#b09850;line-height:1.7}
+.step-sub{margin-top:8px;padding-left:0}
+.step-sub li{list-style:none;padding:4px 0;font-size:12px;color:#b0bec5;line-height:1.7;padding-left:16px;position:relative}
+.step-sub li::before{content:'→';position:absolute;left:0;color:var(--ac);font-size:11px}
+
+.substep-card{background:var(--sf2);border:1px solid rgba(30,58,95,.8);border-radius:8px;padding:12px;margin-top:8px}
+.substep-label{font-size:10px;color:var(--ac);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px;display:flex;align-items:center;gap:6px}
+.substep-label .dot{width:7px;height:7px;border-radius:50%;background:var(--ac);display:inline-block}
+.substep-label.green{color:var(--green)}
+.substep-label.green .dot{background:var(--green)}
+.substep-label.gold{color:var(--gold)}
+.substep-label.gold .dot{background:var(--gold)}
+.substep-body{font-size:12px;color:#b0bec5;line-height:1.8}
+
+/* CHIP VISUAL GUIDE */
+.chip-guide-title{font-size:11px;color:var(--green);letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--br)}
+.chip-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
+.chip-card{background:var(--sf);border:1px solid var(--br);border-radius:10px;padding:12px;text-align:center}
+.chip-card.emmc{border-color:rgba(79,195,247,.3)}
+.chip-card.ufs{border-color:rgba(192,132,252,.3)}
+.chip-card.ram{border-color:rgba(239,68,68,.3)}
+.chip-card.cpu{border-color:rgba(255,107,0,.3)}
+.chip-card.correct{border-color:rgba(74,222,128,.4);background:rgba(74,222,128,.03)}
+.chip-card.wrong{border-color:rgba(239,68,68,.4);background:rgba(239,68,68,.03)}
+.chip-card-label{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px}
+.chip-card.emmc .chip-card-label{color:var(--ac)}
+.chip-card.ufs .chip-card-label{color:var(--purple)}
+.chip-card.ram .chip-card-label{color:var(--red)}
+.chip-card.cpu .chip-card-label{color:#ff6b00}
+.chip-card.correct .chip-card-label{color:var(--green)}
+.chip-card.wrong .chip-card-label{color:var(--red)}
+.chip-desc{font-size:10px;color:var(--mt);line-height:1.6;margin-top:6px}
+.chip-example{font-size:9px;color:var(--ac);margin-top:4px;letter-spacing:.5px;font-style:italic}
+.chip-card.ram .chip-example{color:var(--red)}
+.chip-card.cpu .chip-example{color:#ff6b00}
+.correct-badge{display:inline-block;padding:2px 8px;background:rgba(74,222,128,.15);border:1px solid rgba(74,222,128,.3);border-radius:4px;font-size:9px;color:var(--green);letter-spacing:1px;margin-top:4px}
+.wrong-badge{display:inline-block;padding:2px 8px;background:rgba(239,68,68,.12);border:1px solid rgba(239,68,68,.3);border-radius:4px;font-size:9px;color:var(--red);letter-spacing:1px;margin-top:4px}
+.variant-note{background:rgba(255,215,0,.05);border:1px solid rgba(255,215,0,.2);border-radius:8px;padding:10px 12px;font-size:11px;color:#b09850;line-height:1.8;margin-top:8px}
+.variant-note b{color:var(--gold)}
 </style>
 </head>
 <body>
@@ -280,6 +332,7 @@ body{font-family:'Courier New',monospace;background:var(--bg);color:var(--tx);mi
 </div>
 
 <div class="tabs">
+  <button class="tb" onclick="tab('guide')">GUIDE</button>
   <button class="tb on" onclick="tab('checker')">CHECK</button>
   <button class="tb" onclick="tab('buyers')">BUYERS</button>
   <button class="tb" onclick="tab('ncdb')">NON-CODE</button>
@@ -288,6 +341,283 @@ body{font-family:'Courier New',monospace;background:var(--bg);color:var(--tx);mi
   <button class="tb" onclick="tab('ref')">REFERENCE</button>
   <button class="tb" onclick="tab('tally')">TALLY</button>
   <button class="tb" onclick="tab('about')">INFO</button>
+</div>
+
+
+<!-- ══════ GUIDE ══════ -->
+<div class="tc" id="tab-guide">
+
+  <!-- Hero -->
+  <div class="guide-hero">
+    <h2>How to Use This App</h2>
+    <p>A step-by-step guide for identifying eMMC and UFS chips, checking their grade, and saving non-code chips for future reference.</p>
+    <div class="platform">🌐 Works on any web browser · Phone or Desktop</div>
+  </div>
+
+  <!-- STEP 0: Identify the right chip first -->
+  <div style="background:var(--sf);border:1px solid var(--br);border-radius:10px;padding:14px;margin-bottom:10px">
+    <div class="chip-guide-title">⚠ Step 0 · Find the Right Chip First</div>
+    <p style="font-size:12px;color:#b0bec5;line-height:1.8;margin-bottom:12px">
+      Many technicians confuse the eMMC/UFS chip with RAM or the CPU. Here's how to tell them apart. <b style="color:var(--green)">You want the storage chip</b> — the one with the long alphanumeric code.
+    </p>
+
+    <div class="chip-grid">
+      <!-- eMMC -->
+      <div class="chip-card correct emmc">
+        <div class="chip-card-label">✓ eMMC Chip</div>
+        <svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:64px">
+          <rect x="10" y="8" width="100" height="64" rx="4" fill="#0d1f0d" stroke="#4fc3f7" stroke-width="1.5"/>
+          <!-- pins bottom -->
+          <rect x="18" y="68" width="6" height="6" rx="1" fill="#4fc3f7" opacity=".7"/>
+          <rect x="28" y="68" width="6" height="6" rx="1" fill="#4fc3f7" opacity=".7"/>
+          <rect x="38" y="68" width="6" height="6" rx="1" fill="#4fc3f7" opacity=".7"/>
+          <rect x="48" y="68" width="6" height="6" rx="1" fill="#4fc3f7" opacity=".7"/>
+          <rect x="58" y="68" width="6" height="6" rx="1" fill="#4fc3f7" opacity=".7"/>
+          <rect x="68" y="68" width="6" height="6" rx="1" fill="#4fc3f7" opacity=".7"/>
+          <rect x="78" y="68" width="6" height="6" rx="1" fill="#4fc3f7" opacity=".7"/>
+          <rect x="88" y="68" width="6" height="6" rx="1" fill="#4fc3f7" opacity=".7"/>
+          <!-- pins top -->
+          <rect x="18" y="6" width="6" height="6" rx="1" fill="#4fc3f7" opacity=".7"/>
+          <rect x="28" y="6" width="6" height="6" rx="1" fill="#4fc3f7" opacity=".7"/>
+          <rect x="38" y="6" width="6" height="6" rx="1" fill="#4fc3f7" opacity=".7"/>
+          <rect x="48" y="6" width="6" height="6" rx="1" fill="#4fc3f7" opacity=".7"/>
+          <!-- text lines -->
+          <text x="60" y="28" font-size="7" fill="#6b8fa8" text-anchor="middle" font-family="monospace">SEC 607</text>
+          <text x="60" y="39" font-size="8" fill="#4fc3f7" text-anchor="middle" font-family="monospace" font-weight="bold">KMR820001M</text>
+          <text x="60" y="50" font-size="7" fill="#6b8fa8" text-anchor="middle" font-family="monospace">B611</text>
+          <text x="60" y="60" font-size="6" fill="#607d8b" text-anchor="middle" font-family="monospace">GMK92990</text>
+        </svg>
+        <div class="chip-desc">Medium square chip. Has a long code on top like <b style="color:var(--ac)">KMRX1000BM</b> or <b style="color:var(--ac)">H9TQ26ADFT</b>. Usually Samsung or SK Hynix.</div>
+        <div class="chip-example">Samsung (KM*) · SK Hynix (H9*) · Toshiba (TY*)</div>
+        <div class="correct-badge">✓ THIS IS WHAT YOU WANT</div>
+      </div>
+
+      <!-- UFS -->
+      <div class="chip-card correct ufs">
+        <div class="chip-card-label">✓ UFS Chip</div>
+        <svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:64px">
+          <rect x="15" y="8" width="90" height="64" rx="4" fill="#120d1f" stroke="#c084fc" stroke-width="1.5"/>
+          <!-- BGA dots pattern -->
+          <circle cx="30" cy="62" r="2" fill="#c084fc" opacity=".6"/>
+          <circle cx="40" cy="62" r="2" fill="#c084fc" opacity=".6"/>
+          <circle cx="50" cy="62" r="2" fill="#c084fc" opacity=".6"/>
+          <circle cx="60" cy="62" r="2" fill="#c084fc" opacity=".6"/>
+          <circle cx="70" cy="62" r="2" fill="#c084fc" opacity=".6"/>
+          <circle cx="80" cy="62" r="2" fill="#c084fc" opacity=".6"/>
+          <circle cx="90" cy="62" r="2" fill="#c084fc" opacity=".6"/>
+          <circle cx="30" cy="70" r="2" fill="#c084fc" opacity=".4"/>
+          <circle cx="40" cy="70" r="2" fill="#c084fc" opacity=".4"/>
+          <circle cx="50" cy="70" r="2" fill="#c084fc" opacity=".4"/>
+          <circle cx="60" cy="70" r="2" fill="#c084fc" opacity=".4"/>
+          <circle cx="70" cy="70" r="2" fill="#c084fc" opacity=".4"/>
+          <circle cx="80" cy="70" r="2" fill="#c084fc" opacity=".4"/>
+          <text x="60" y="26" font-size="7" fill="#7a6b9a" text-anchor="middle" font-family="monospace">SAMSUNG</text>
+          <text x="60" y="37" font-size="7.5" fill="#c084fc" text-anchor="middle" font-family="monospace" font-weight="bold">KM8V7001JM</text>
+          <text x="60" y="47" font-size="6.5" fill="#7a6b9a" text-anchor="middle" font-family="monospace">B810</text>
+          <text x="60" y="56" font-size="6" fill="#607d8b" text-anchor="middle" font-family="monospace">UFS 3.1</text>
+        </svg>
+        <div class="chip-desc">Slightly smaller, BGA pads on bottom (no visible pins). Code starts with <b style="color:var(--purple)">KM8</b>, <b style="color:var(--purple)">KM5</b>, <b style="color:var(--purple)">KM3</b>, or <b style="color:var(--purple)">H9HQ</b>.</div>
+        <div class="chip-example">KM8* · KM5* · KM3* · KM2* · H9HQ*</div>
+        <div class="correct-badge">✓ THIS IS WHAT YOU WANT</div>
+      </div>
+
+      <!-- RAM - WRONG -->
+      <div class="chip-card wrong ram">
+        <div class="chip-card-label">✗ RAM / LPDDR</div>
+        <svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:64px">
+          <!-- RAM is usually a wide flat rectangle -->
+          <rect x="5" y="20" width="110" height="40" rx="3" fill="#1a0808" stroke="#ef4444" stroke-width="1.5"/>
+          <!-- many fine pins on sides -->
+          <rect x="3" y="24" width="4" height="3" rx="1" fill="#ef4444" opacity=".6"/>
+          <rect x="3" y="30" width="4" height="3" rx="1" fill="#ef4444" opacity=".6"/>
+          <rect x="3" y="36" width="4" height="3" rx="1" fill="#ef4444" opacity=".6"/>
+          <rect x="3" y="42" width="4" height="3" rx="1" fill="#ef4444" opacity=".6"/>
+          <rect x="3" y="48" width="4" height="3" rx="1" fill="#ef4444" opacity=".6"/>
+          <rect x="113" y="24" width="4" height="3" rx="1" fill="#ef4444" opacity=".6"/>
+          <rect x="113" y="30" width="4" height="3" rx="1" fill="#ef4444" opacity=".6"/>
+          <rect x="113" y="36" width="4" height="3" rx="1" fill="#ef4444" opacity=".6"/>
+          <rect x="113" y="42" width="4" height="3" rx="1" fill="#ef4444" opacity=".6"/>
+          <rect x="113" y="48" width="4" height="3" rx="1" fill="#ef4444" opacity=".6"/>
+          <text x="60" y="34" font-size="7" fill="#9a6060" text-anchor="middle" font-family="monospace">K4EBE304EB</text>
+          <text x="60" y="44" font-size="6.5" fill="#7a5050" text-anchor="middle" font-family="monospace">LPDDR4X · 8GB</text>
+          <text x="60" y="53" font-size="6" fill="#607d8b" text-anchor="middle" font-family="monospace">Samsung</text>
+        </svg>
+        <div class="chip-desc">Usually <b style="color:var(--red)">wide and rectangular</b>. Code starts with <b style="color:var(--red)">K4E</b>, <b style="color:var(--red)">K4F</b>, or <b style="color:var(--red)">H9H</b> (SK Hynix RAM). <b>Do NOT enter this in the checker.</b></div>
+        <div class="chip-example">K4EBE304 · K4F8E304 · H9HKNNNCP</div>
+        <div class="wrong-badge">✗ NOT STORAGE — SKIP</div>
+      </div>
+
+      <!-- CPU - WRONG -->
+      <div class="chip-card wrong cpu">
+        <div class="chip-card-label">✗ CPU / SoC</div>
+        <svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:64px">
+          <!-- CPU is large square with many pins -->
+          <rect x="20" y="8" width="80" height="64" rx="4" fill="#1a0e00" stroke="#ff6b00" stroke-width="1.5"/>
+          <!-- many tiny BGA dots -->
+          <g opacity=".5" fill="#ff6b00">
+          <circle cx="30" cy="70" r="1.5"/><circle cx="37" cy="70" r="1.5"/><circle cx="44" cy="70" r="1.5"/>
+          <circle cx="51" cy="70" r="1.5"/><circle cx="58" cy="70" r="1.5"/><circle cx="65" cy="70" r="1.5"/>
+          <circle cx="72" cy="70" r="1.5"/><circle cx="79" cy="70" r="1.5"/><circle cx="86" cy="70" r="1.5"/>
+          <circle cx="93" cy="70" r="1.5"/>
+          <circle cx="30" cy="63" r="1.5"/><circle cx="37" cy="63" r="1.5"/><circle cx="44" cy="63" r="1.5"/>
+          <circle cx="51" cy="63" r="1.5"/><circle cx="58" cy="63" r="1.5"/><circle cx="65" cy="63" r="1.5"/>
+          <circle cx="72" cy="63" r="1.5"/><circle cx="79" cy="63" r="1.5"/><circle cx="86" cy="63" r="1.5"/>
+          </g>
+          <!-- CPU internal die marks -->
+          <rect x="30" y="16" width="60" height="40" rx="2" fill="none" stroke="#ff6b00" stroke-width=".5" opacity=".4"/>
+          <rect x="36" y="22" width="20" height="14" rx="1" fill="#ff6b00" opacity=".12"/>
+          <rect x="62" y="22" width="22" height="14" rx="1" fill="#ff6b00" opacity=".12"/>
+          <rect x="36" y="40" width="48" height="10" rx="1" fill="#ff6b00" opacity=".08"/>
+          <text x="60" y="36" font-size="6.5" fill="#cc7040" text-anchor="middle" font-family="monospace">Snapdragon</text>
+          <text x="60" y="46" font-size="6" fill="#9a6030" text-anchor="middle" font-family="monospace">665/680/778</text>
+        </svg>
+        <div class="chip-desc"><b style="color:#ff6b00">Largest chip</b> on the board. Usually labeled Snapdragon, Helio, Kirin, or Exynos. No storage codes. <b>Do NOT enter this.</b></div>
+        <div class="chip-example">Snapdragon · Helio · Kirin · Exynos</div>
+        <div class="wrong-badge">✗ NOT STORAGE — SKIP</div>
+      </div>
+    </div>
+
+    <!-- Visual comparison tip -->
+    <div style="background:rgba(74,222,128,.05);border:1px solid rgba(74,222,128,.2);border-radius:8px;padding:12px;font-size:12px;color:#b0bec5;line-height:1.8">
+      <b style="color:var(--green)">💡 Quick identification tip:</b><br>
+      The eMMC/UFS chip you want is usually a <b style="color:var(--tx)">medium-sized square or rectangle</b> near the center of the board. It will have a multi-line code printed on it — the longest line is the model number you need to type. Look for codes starting with <b style="color:var(--ac)">KMR, KMQ, KMG, KMD, KMW, KMF, KM8, KM5, KM3, H9TQ, H9HQ, H9HP, TYD, TYE</b> or similar.
+    </div>
+
+    <!-- Location on board -->
+    <div style="margin-top:10px;background:rgba(0,0,0,.2);border-radius:8px;padding:12px">
+      <div style="font-size:10px;color:var(--mt);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px">Where to find it on the board</div>
+      <svg viewBox="0 0 340 160" xmlns="http://www.w3.org/2000/svg" style="width:100%;border-radius:6px">
+        <!-- PCB background -->
+        <rect width="340" height="160" fill="#0a1a0a"/>
+        <!-- Board outline -->
+        <rect x="10" y="10" width="320" height="140" rx="6" fill="#0d1f0d" stroke="#1e3a1e" stroke-width="1.5"/>
+        <!-- Traces -->
+        <line x1="10" y1="40" x2="330" y2="40" stroke="#1a3a1a" stroke-width=".5"/>
+        <line x1="10" y1="80" x2="330" y2="80" stroke="#1a3a1a" stroke-width=".5"/>
+        <line x1="10" y1="120" x2="330" y2="120" stroke="#1a3a1a" stroke-width=".5"/>
+        <line x1="80" y1="10" x2="80" y2="150" stroke="#1a3a1a" stroke-width=".5"/>
+        <line x1="170" y1="10" x2="170" y2="150" stroke="#1a3a1a" stroke-width=".5"/>
+        <line x1="260" y1="10" x2="260" y2="150" stroke="#1a3a1a" stroke-width=".5"/>
+        <!-- CPU - large orange -->
+        <rect x="20" y="20" width="55" height="55" rx="3" fill="#1a0e00" stroke="#ff6b00" stroke-width="1.5"/>
+        <text x="47" y="44" font-size="7" fill="#cc7040" text-anchor="middle" font-family="monospace">CPU</text>
+        <text x="47" y="54" font-size="6" fill="#9a6030" text-anchor="middle" font-family="monospace">SoC</text>
+        <!-- RAM - red rectangle -->
+        <rect x="85" y="20" width="72" height="30" rx="2" fill="#1a0808" stroke="#ef4444" stroke-width="1.2"/>
+        <text x="121" y="36" font-size="7" fill="#cc5050" text-anchor="middle" font-family="monospace">RAM</text>
+        <!-- eMMC - highlighted green -->
+        <rect x="175" y="20" width="50" height="50" rx="3" fill="#091f09" stroke="#4ade80" stroke-width="2"/>
+        <rect x="177" y="22" width="46" height="46" rx="2" fill="none" stroke="#4ade80" stroke-width=".5" opacity=".4"/>
+        <text x="200" y="41" font-size="6.5" fill="#4fc3f7" text-anchor="middle" font-family="monospace">KMR820</text>
+        <text x="200" y="51" font-size="6" fill="#4ade80" text-anchor="middle" font-family="monospace">001M-B611</text>
+        <!-- Arrow pointing to eMMC -->
+        <line x1="200" y1="80" x2="200" y2="72" stroke="#4ade80" stroke-width="1.5" marker-end="url(#arr)"/>
+        <defs><marker id="arr" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#4ade80"/></marker></defs>
+        <text x="200" y="93" font-size="8" fill="#4ade80" text-anchor="middle" font-family="monospace" font-weight="bold">eMMC/UFS</text>
+        <text x="200" y="103" font-size="7" fill="#4ade80" text-anchor="middle" font-family="monospace">← CHECK THIS</text>
+        <!-- Power IC -->
+        <rect x="240" y="20" width="30" height="25" rx="2" fill="#0d1525" stroke="#607d8b" stroke-width="1"/>
+        <text x="255" y="34" font-size="6" fill="#607d8b" text-anchor="middle" font-family="monospace">PMIC</text>
+        <!-- Connector -->
+        <rect x="280" y="20" width="42" height="15" rx="2" fill="#0d1525" stroke="#607d8b" stroke-width="1"/>
+        <text x="301" y="30" font-size="6" fill="#607d8b" text-anchor="middle" font-family="monospace">Connector</text>
+        <!-- Small components -->
+        <rect x="20" y="85" width="10" height="6" rx="1" fill="#0d1525" stroke="#607d8b" stroke-width=".8"/>
+        <rect x="35" y="85" width="10" height="6" rx="1" fill="#0d1525" stroke="#607d8b" stroke-width=".8"/>
+        <rect x="50" y="85" width="10" height="6" rx="1" fill="#0d1525" stroke="#607d8b" stroke-width=".8"/>
+        <rect x="20" y="95" width="10" height="6" rx="1" fill="#0d1525" stroke="#607d8b" stroke-width=".8"/>
+        <rect x="35" y="95" width="10" height="6" rx="1" fill="#0d1525" stroke="#607d8b" stroke-width=".8"/>
+        <!-- Labels -->
+        <text x="47" y="140" font-size="7" fill="#cc7040" text-anchor="middle">CPU</text>
+        <text x="121" y="140" font-size="7" fill="#ef4444" text-anchor="middle">RAM</text>
+        <text x="200" y="140" font-size="7" fill="#4ade80" text-anchor="middle" font-weight="bold">✓ eMMC/UFS</text>
+        <text x="255" y="140" font-size="7" fill="#607d8b" text-anchor="middle">Others</text>
+      </svg>
+    </div>
+  </div>
+
+  <!-- STEP 1 -->
+  <div class="step-card">
+    <div class="step-title"><span class="step-num">1</span> Use Camera to Zoom In on the Chip</div>
+    <div class="step-body">
+      Tap the <b>📷 Camera</b> button to open your phone camera. <b>Do NOT use it to automatically identify the chip</b> — the camera is only for zooming in so you can read the small text printed on the chip clearly.
+      <span class="tip">💡 Tip: Use your phone camera's pinch-to-zoom or macro mode to read the chip markings clearly. Good lighting helps a lot. You can also use the Gallery button if you already have a photo.</span>
+      <span class="warn">⚠ The code you need is the longest line on the chip — usually 10–18 characters long. Example: <b>KMRX1000BM</b> or <b>H9TQ26ADFTMCU</b></span>
+    </div>
+  </div>
+
+  <!-- STEP 2 -->
+  <div class="step-card">
+    <div class="step-title"><span class="step-num">2</span> Type the Chip Code in the Text Box</div>
+    <div class="step-body">
+      After reading the chip marking, type the code in the <b>Chip Model Number</b> text box. Type letter by letter — a dropdown list will appear as you type.
+      <span class="tip">💡 You only need to type the first part of the code. For example, typing <b>KMRX</b> will already show matching chips in the dropdown list.</span>
+
+      <div class="substep-card" style="margin-top:10px">
+        <div class="substep-label green"><span class="dot"></span> Case 2.1 — Chip shows in the dropdown list</div>
+        <div class="substep-body">
+          As you type, matching chip codes appear in a list below the text box. <b style="color:var(--green)">Tap any item from the list to select it</b> — the grade, storage size, type, and price will instantly appear below.<br><br>
+          <b style="color:var(--gold)">Note on variants:</b> Some chips look almost identical on the board but differ by one letter (e.g. <b>KMRX1000BM</b> vs <b>KMRX1000AM</b>). The grade is usually the same — small letter differences (A/M, B/C) are often just production batch codes for the same chip family.
+        </div>
+      </div>
+
+      <div class="substep-card" style="margin-top:8px">
+        <div class="substep-label gold"><span class="dot"></span> Case 2.2 — Chip does NOT appear in the dropdown</div>
+        <div class="substep-body">
+          If nothing shows in the dropdown, finish typing the full code then tap <b style="color:var(--ac)">🔍 CHECK GRADE</b>.<br><br>
+          A <b style="color:var(--purple)">🌐 Search Online</b> button will appear below. Tap it — it will open a new browser tab with a Google search for your chip code. Look for the storage size (8GB, 16GB, 32GB, etc.) in the search results.<br><br>
+          Once you know the GB size, <b>go back to this app tab</b>, select the correct GB size from the buttons shown (e.g. <b style="color:var(--green)">16GB</b>), then tap <b style="color:var(--green)">➕ Save as Non-Code</b>.<br><br>
+          <b style="color:var(--gold)">After saving:</b> The chip is added to your personal Non-Code database. Next time you type that code, it will appear in the dropdown list automatically with its GB size.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 3 -->
+  <div class="step-card">
+    <div class="step-title"><span class="step-num">3</span> Read the Grade Result</div>
+    <div class="step-body">
+      After checking, the result card shows:
+      <ul class="step-sub">
+        <li><b>Grade</b> — A1 through A5 (A5 is highest quality)</li>
+        <li><b>Storage size</b> — 16GB / 32GB / 64GB / 128GB / 256GB</li>
+        <li><b>Chip type</b> — eMMC 5.1, UFS 2.1, UFS 3.1, etc.</li>
+        <li><b>Manufacturer</b> — Samsung, SK Hynix, Toshiba, etc.</li>
+        <li><b>Your price</b> — from the My Prices tab</li>
+        <li><b>Buyer prices</b> — all your saved buyers shown below</li>
+      </ul>
+      <span class="tip">💡 Add your buyers and their prices in the <b>BUYERS</b> tab. Their prices will automatically appear every time you check a chip.</span>
+    </div>
+  </div>
+
+  <!-- STEP 4 -->
+  <div class="step-card">
+    <div class="step-title"><span class="step-num">4</span> Other Useful Features</div>
+    <div class="step-body">
+      <ul class="step-sub">
+        <li><b>BUYERS tab</b> — Save each buyer with their own A1–A5 and GB prices. Shows on every result.</li>
+        <li><b>NON-CODE tab</b> — View and manage all chips you've saved as non-code.</li>
+        <li><b>TALLY tab</b> — Count chips and get a grand total. Auto-fill prices from any buyer. Save and share sessions.</li>
+        <li><b>MY PRICES tab</b> — Set your own personal reference prices for each grade and GB size.</li>
+        <li><b>REFERENCE tab</b> — View the original chip grade charts used to build this database.</li>
+        <li><b>HISTORY tab</b> — See your last 30 chip checks with grades and prices.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Variant note -->
+  <div class="variant-note">
+    <b>📌 About Code Variants</b><br>
+    Some chips on the board may have slightly different codes from what's in the database. For example, <b>KMRX1000BM-B614</b> and <b>KMRX1000AM-B614</b> are the same chip family — the difference in the middle letter (A vs B, M vs L, etc.) is usually a production revision that doesn't change the grade or storage size. If your exact code isn't found, try typing just the first 8–10 characters and see if a matching chip appears.
+  </div>
+
+  <!-- Quick start button -->
+  <div style="text-align:center;margin-top:14px;margin-bottom:4px">
+    <button onclick="tab('checker')" style="background:var(--ac);color:#0a0e1a;border:none;border-radius:10px;padding:14px 32px;font-family:inherit;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer">
+      🔍 Start Checking →
+    </button>
+  </div>
+
 </div>
 
 <!-- ══════ CHECKER ══════ -->
@@ -522,14 +852,14 @@ body{font-family:'Courier New',monospace;background:var(--bg);color:var(--tx);mi
   <div class="ac2">
     <h3>How to Use</h3>
     <ul>
-      <li>Tap Camera or Gallery to load a chip photo</li>
-      <li>Read the marking and type the model number</li>
-      <li>Matched chips show grade A1–A5, storage, type and price</li>
-      <li>Unknown chips show as possible non-code</li>
-      <li>Select GB size to save it to Non-Code database</li>
-      <li>Tap Search Online to look up chip in browser</li>
-      <li>Add buyers with their own price lists in Buyers tab</li>
+      <li>Go to <b>GUIDE tab</b> for full step-by-step instructions with chip identification visuals</li>
+      <li>Use Camera to zoom in and read the chip code, then type it in the text box</li>
+      <li>Select from dropdown list if chip appears, or tap Check Grade then Search Online</li>
+      <li>Save unknown chips as Non-Code with correct GB size for future reference</li>
+      <li>Add buyers with their own prices in the Buyers tab</li>
+      <li>Use Tally tab to count chips and calculate totals per buyer</li>
     </ul>
+    <button onclick="tab('guide')" style="display:block;margin-top:10px;background:none;border:1px solid var(--ac);border-radius:8px;padding:9px 16px;color:var(--ac);font-family:inherit;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;width:100%">📖 Open Full Guide →</button>
   </div>
 
   <div class="ac2">
@@ -871,7 +1201,7 @@ function getSugs(partial) {
 
 // ── TABS ───────────────────────────────────────────────────────
 function tab(t) {
-  var tabNames = ['checker','buyers','ncdb','history','prices','ref','tally','about'];
+  var tabNames = ['guide','checker','buyers','ncdb','history','prices','ref','tally','about'];
   var btns = document.querySelectorAll('.tb');
   var panes = document.querySelectorAll('.tc');
   for (var i=0; i<btns.length; i++) {
